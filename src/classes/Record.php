@@ -16,22 +16,24 @@ class Record {
     private $answer;
     private $recordType;
     private $ttl;
+    private $name;
 
-
-    public function __construct(array $input) {
+    public function __construct(array $input, string $name) {
         $this->rawinput = $input;
+        $this->name = $name;
 
-        if (sizeof($input) > 1) {
-            foreach ($input as $rec => $value) {
-                $this->answer[$rec] = $value->Answer;
-                $this->recordType[$rec] = new RecordTypes($value->RecordType); $this->recordType[$rec] = $this->recordType[$rec]->getKey();
-                $this->ttl[$rec] = $value->TTL;
-            }
-        } else {
-            $this->answer = $input[0]->Answer;
-            $this->recordType = new RecordTypes($input[0]->RecordType); $this->recordType = $this->recordType->getKey();
-            $this->ttl = $input[0]->TTL;
-        }
+        $this->answer = $input[0]->Answer;
+        $this->recordType = new RecordTypes($input[0]->RecordType);
+        $this->recordType = $this->recordType->getKey();
+        $this->ttl = $input[0]->TTL;
+
+    }
+
+    /**
+     * @return string
+     */
+    public function getName() {
+        return $this->name;
     }
 
     /**

@@ -18,10 +18,19 @@ class Zone {
 
     public function __construct(\stdClass $input) {
         $this->rawdata = $input;
-        foreach($input as $domain => $records) {
+        $i = 0;
+        foreach ($input as $domain => $records) {
             $this->domain = $domain;
             foreach ($records as $name => $details) {
-                $this->records[$name] = new Record($details);
+                if (sizeof($details) > 1) {
+                    foreach ($details as $detail) {
+                        $this->records[$i] = new Record(array($detail), $name);
+                        $i++;
+                    }
+                } else {
+                    $this->records[$i] = new Record($details, $name);
+                    $i++;
+                }
             }
         }
     }
