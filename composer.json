@@ -1,0 +1,23 @@
+{
+    "name": "bennetgallein/bind-php-wrapper",
+    "description": "A Wrapper to bind the PythonAPI to PHP",
+    "type": "library",
+    "require": {
+        "php": ">=7.2",
+        "ext-curl": "^7.2",
+        "ext-json": "^1.6",
+        "tracy/tracy": "^2.5",
+        "myclabs/php-enum": "^1.6"
+    },
+    "authors": [
+        {
+            "name": "Bennet Gallein",
+            "email": "bennet@intranetproject.net"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "BIND\\": "src/"
+        }
+    }
+}
