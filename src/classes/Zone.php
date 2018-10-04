@@ -21,15 +21,17 @@ class Zone {
         $i = 0;
         foreach ($input as $domain => $records) {
             $this->domain = $domain;
-            foreach ($records as $name => $details) {
-                if (sizeof($details) > 1) {
-                    foreach ($details as $detail) {
-                        $this->records[$i] = new Record(array($detail), $name);
+            if ($domain != "error") {
+                foreach ($records as $name => $details) {
+                    if (sizeof($details) > 1) {
+                        foreach ($details as $detail) {
+                            $this->records[$i] = new Record(array($detail), $name);
+                            $i++;
+                        }
+                    } else {
+                        $this->records[$i] = new Record($details, $name);
                         $i++;
                     }
-                } else {
-                    $this->records[$i] = new Record($details, $name);
-                    $i++;
                 }
             }
         }
