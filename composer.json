@@ -3,7 +3,7 @@
     "description": "A Wrapper to bind the PythonAPI to PHP",
     "type": "library",
     "require": {
-        "php": ">=7.2",
+        "php": ">=7.1",
         "ext-curl": "^7.2",
         "ext-json": "^1.6",
         "tracy/tracy": "^2.5",
