@@ -16,7 +16,10 @@ class Zone {
 
     private $rawdata;
 
-    public function __construct(\stdClass $input) {
+    public function __construct($input) {
+        if ($input == null) {
+            throw new \Exception("No Data returned");
+        }
         $this->rawdata = $input;
         $i = 0;
         foreach ($input as $domain => $records) {

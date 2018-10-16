@@ -12,11 +12,13 @@ include("vendor/autoload.php");
 
 \Tracy\Debugger::enable();
 
-$bind = new BIND("192.168.1.104");
+$bind = new BIND("192.168.1.101");
 
 //$suc = $bind->addRecord("test2.gallein2.de", "86400", "A", "192.168.1.2");
 
-$a = $bind->getZone("gallein2.de")->getRecords();
+$a = $bind->getZone("gallein2.de");
+
+//$a = $bind->getZone("gallein2.de")->getRecords();
 ?>
     <html>
     <head>
